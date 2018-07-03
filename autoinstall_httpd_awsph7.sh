@@ -43,7 +43,7 @@ echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
 perl -pi -e "s/www.example.com:80/$servername/g" /etc/httpd/conf/httpd.conf
 service httpd restart
 
-sh dbcreatecaws.sh
+sh dbcreatecawsph7.sh
 # phpMyAdmin is a web-based database management tool that you can use to view and edit the MySQL databases on your EC2 instance"
 
 yum install php-mbstring.x86_64 php-zip.x86_64 -y
