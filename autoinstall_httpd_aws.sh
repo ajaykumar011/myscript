@@ -35,22 +35,33 @@ perl -pi -e "s/www.example.com:80/$servername/g" /etc/httpd/conf/httpd.conf
 service httpd restart
 
 sh dbcreatecaws.sh
+# phpMyAdmin is a web-based database management tool that you can use to view and edit the MySQL databases on your EC2 instance"
 
-yum -y install phpmyadmin
+yum install php-mbstring.x86_64 php-zip.x86_64 -y
+service httpd restart
+cd /var/www/html
+wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+mkdir phpMyAdmin && tar -xzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
+rm -rf phpMyAdmin-latest-all-languages.tar.gz
+service mariadb restart
+# you can browse the site from this link http://my.public.dns.amazonaws.com/phpMyAdmin
+
 perl -pi -e "s/127.0.0.1/$myip/g" /etc/httpd/conf.d/phpMyAdmin.conf
 echo "phpMyadmin Installed..."
 echo " "
 echo "Server [$servername] status....."
 echo "================================================"
 curl -I -L http://$servername
-echo "Server WAN IP Address " $myip >> /tmp/scriptinfo.txt
-echo "Server Host name " $(hostname) >> /tmp/scriptinfo.txt
-echo "-----------------------------------------------------------" >> /tmp/scriptinfo
-clear
-clear
-echo "Now you will configure the rest ................."
-echo "Script information file is there in /tmp/scriptinfo.txt ................."
-echo "========================================================================="
-clear
-clear
-cat /tmp/scriptinfo.txt
+echo "Server WAN IP Address " $myip 
+echo "Server Host name " $(hostname) 
+echo "-----------------------------------------------------------" 
+echo "Version Information of Installed LAMP"
+
+httpd -v
+#Server version: Apache/2.4.33 ()
+php -v
+#PHP 5.4.16 (cli) (built: Jun 19 2018 19:05:33)
+mysql --version
+#mysql  Ver 15.1 Distrib 5.5.56-MariaDB, for Linux (x86_64) using readline 5.1
+cat /etc/system-release
+#Amazon Linux 2
