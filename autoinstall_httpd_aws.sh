@@ -11,7 +11,6 @@ servername="$(hostname):80"
 myip=$(curl -s http://myip.dnsomatic.com | grep -P '[\d.]')
 #Installation begins here..
 yum update -y 
-yum install vim epel-release net-tools -y
 alias vi=vim
 echo "Your Amazon AMI Version"
 cat /etc/system-release
