@@ -77,12 +77,10 @@ rm -rf index.html
 echo "=========================================================="
 echo "Wordpress Installation is completed."
 echo "=========================================================="
-echo "MYSQL Root password is copied to a scriptinfo file"
-rm -rf /tmp/scriptinfo.txt
-touch /tmp/scriptinfo.txt
-echo "-----------------Script Output-----------------------" >> /tmp/scriptinfo
-echo "::::::Date_Time:::::::" $(date +%F_%R) >> /tmp/scriptinfo.txt
-echo "MySQL Password.." $MYSQL_PASS >> /tmp/scriptinfo.txt
-echo "DB User & Host : " $dbuser"@"$(hostname) >> /tmp/scriptinfo.txt
-echo "DB Name: " $dbname >> /tmp/scriptinfo.txt
-echo "DB Password: " $dbpass >> /tmp/scriptinfo.txt
+
+echo "-----------------Script Output-----------------------" 
+echo "::::::Date_Time:::::::" $(date +%F_%R) 
+echo "MySQL Password.." $MYSQL_PASS 
+echo "DB User & Host : " $dbuser"@"$(hostname) 
+echo "DB Name: " $dbname 
+echo "DB Password: " $dbpass
