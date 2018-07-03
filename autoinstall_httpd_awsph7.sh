@@ -51,12 +51,13 @@ service httpd restart
 cd /var/www/html
 wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
 mkdir phpMyAdmin && tar -xzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
-rm -rf phpMyAdmin-latest-all-languages.tar.gz
+rm -rf phpMyAdmin-latest-all-languages.tar.
 service mariadb restart
+echo "your phpMyAdmin link is ready to use"
 # you can browse the site from this link http://my.public.dns.amazonaws.com/phpMyAdmin
 
-perl -pi -e "s/127.0.0.1/$myip/g" /etc/httpd/conf.d/phpMyAdmin.conf
-echo "phpMyadmin Installed..."
+#perl -pi -e "s/127.0.0.1/$myip/g" /etc/httpd/conf.d/phpMyAdmin.conf
+echo "phpMyadmin Installed... you can browser by using your servername/phpMyAdmin link."
 echo " "
 echo "Server [$servername] status....."
 echo "================================================"
@@ -74,3 +75,6 @@ mysql --version
 #mysql  Ver 15.1 Distrib 10.2.10-MariaDB,
 cat /etc/system-release
 #Amazon Linux 2
+echo "=========================================================="
+echo "Linux AMI SERVER Setup and Wordpress Installation is completed."
+echo "=========================================================="
