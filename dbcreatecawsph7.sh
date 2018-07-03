@@ -16,8 +16,10 @@ MYSQL_PASS=$(openssl rand -base64 12); #this is root password of mysql of 12 cha
 
 webroot="/var/www/html"
 yum install expect -y
+
 systemctl restart mariadb
 systemctl enable mariadb
+
 expect -f - <<-EOF
   set timeout 1
   spawn mysql_secure_installation
@@ -72,15 +74,8 @@ chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
 find /var/www -type f -exec sudo chmod 0664 {} \;
 
 #Cleaning work
-rm latest.tar.gz
-rm -rf index.html
-echo "=========================================================="
-echo "Wordpress Installation is completed."
-echo "=========================================================="
-
+rm -rf /var/www/html/latest.tar.gz
+rm -rf /var/www/html/index.html
 echo "-----------------Script Output-----------------------" 
 echo "::::::Date_Time:::::::" $(date +%F_%R) 
-echo "MySQL Password.." $MYSQL_PASS 
-echo "DB User & Host : " $dbuser"@"$(hostname) 
-echo "DB Name: " $dbname 
-echo "DB Password: " $dbpass
+echo "MySQL Root Password.." $MYSQL_PASS 
