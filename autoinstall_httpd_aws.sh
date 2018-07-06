@@ -14,6 +14,7 @@ yum update -y
 alias vi=vim
 echo "Your Amazon AMI Version"
 cat /etc/system-release
+cat /sys/hypervisor/uuid
 echo "Your OS Release information"
 cat /etc/os-release
 uname -a
