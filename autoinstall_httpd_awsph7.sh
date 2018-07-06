@@ -12,7 +12,10 @@ myip=$(curl -s http://myip.dnsomatic.com | grep -P '[\d.]')
 #Installation begins here..
 yum update -y 
 alias vi=vim
-echo "Your Amazon AMI Version"
+echo "Your Amazon Hypervisor Version and AMI Version"
+cat /sys/hypervisor/uuid
+ec236153-217b-786d-ccc6-1035daada854
+
 cat /etc/system-release
 echo "Your OS Release information"
 cat /etc/os-release
