@@ -1,2 +1,1 @@
-# wp-install.sh
-WP Install Setup
+This Repository contains the small utilities that ease in various system administration tasks.
